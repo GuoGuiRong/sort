@@ -28,26 +28,29 @@ public class QuickSort {
         if(start<end) {
 
             int i = start;
-            int j = end;
+            int j = end+1;
             while (true) {
                 /**
                  * 找出大于临界值的位置
                  */
-                 while (true) {
+                while(dataWarps[++i].compareTo(temp) < 0 && i < end-1);
+                 /*while (true) {
                      if (dataWarps[i].compareTo(temp) > 0 || i == end) {
                          break;
                      }
                      i++;
-                 }
+                 }*/
+
                 /**
                  * 找出小于临界值的位置
                  */
-                 while (true) {
+                while(dataWarps[--j].compareTo(temp) > 0 && j >start);
+                /* while (true) {
                      if (dataWarps[j].compareTo(temp) < 0 || j == start) {
                          break;
                      }
                      --j;
-                 }
+                 }*/
 
                 if (i < j) {
                     ObjUtil.swap(dataWarps, i, j);
