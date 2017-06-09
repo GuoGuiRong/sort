@@ -23,23 +23,19 @@ public class DirectInsert {
         int len = dataWarps.length;
         for(int i=1;i<len;i++){
 
-            if(dataWarps[i].compareTo(dataWarps[i-1])<0){
+            if(dataWarps[i].compareTo(dataWarps[i-1])<0) {
 
                 DataWarp temp = dataWarps[i];
-                for(int j=i-1;j>=0;j--){
+                int j = i - 1;
+                for (; j >= 0&&(temp.compareTo(dataWarps[j]) < 0); j--) {
 
-                        if(temp.compareTo(dataWarps[j])<0){
-                            dataWarps[j+1]=dataWarps[j];
-                            if(j==0){
-                                dataWarps[j]=temp;
-                            }
-                        }else{
-                            dataWarps[j+1]=temp;
-                            break;
-                        }
+                    dataWarps[j + 1] = dataWarps[j];
 
-                    }
                 }
+
+                dataWarps[j + 1] = temp;
+            }
+
             System.out.println("i="+i);
             ObjUtil.display(dataWarps);
         }
